@@ -1,306 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StudyBridgeConnect</title>
-
-  <!-- Core stylesheet -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- EmailJS for contact form (replace keys with your own) -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-  <!-- Theme & component tweaks (override style.css) -->
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #004e89;     /* deep navy‑blue from logo */
-      --secondary-color: #f5b400;   /* golden yellow from logo */
-      --accent-color: #0cafff;      /* lighter sky blue  */
-      --light-color: #f9f9f9;
-      --dark-color: #1b1b1b;
-      --card-radius: 10px;
+      --primary-color: #004E89;
+      --secondary-color: #F5B400;
+      --light-bg: #F9F9F9;
+      --dark-bg: #1E1E1E;
+      --card-bg: #FFFFFF;
+      --font: 'Inter', sans-serif;
     }
 
-    /* Header */
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background-color: var(--light-bg);
+      color: #333;
+    }
+
     header {
-      background: var(--primary-color);
-      color: #fff;
+      background: linear-gradient(90deg, var(--primary-color), #0066cc);
+      color: white;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     header h1 {
-      margin: 0;
       display: flex;
       align-items: center;
-      font-size: 1.6rem;
+      gap: 0.5rem;
     }
     header img.logo {
-      height: 48px;
-      margin-right: 0.6rem;
+      height: 50px;
     }
-
-    /* Footer with centered logo */
-    footer {
-      background: var(--primary-color);
-      color: #fff;
-      text-align: center;
-      padding: 1.5rem 1rem 1.8rem;
+    nav ul {
+      list-style: none;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      gap: 1.2rem;
+      margin: 0;
+      padding: 0;
     }
-    .footer-logo {
-      height: 60px;
-      margin-bottom: 0.6rem;
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
 
-    /* Back‑to‑top button */
-    #backToTop {
-      position: fixed;
-      bottom: 90px;
-      right: 24px;
-      background: var(--secondary-color);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 0.55rem 0.8rem;
-      font-size: 1.25rem;
-      cursor: pointer;
-      display: none;
-      z-index: 1000;
+    section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
     }
-    #backToTop.show {
+    section h2 {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    a.pdf-link {
       display: block;
+      margin: 0.3rem 0;
+      color: #0066cc;
+    }
+
+    .footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    .footer img {
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      font-size: 24px;
+      padding: 12px 15px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      text-decoration: none;
+    }
+    .announcement {
+      background: #ffe9a7;
+      color: #5c4200;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+    }
+    .flag-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
     }
   </style>
 </head>
-
 <body>
-  <!-- ╔════════ Header ═════════╗ -->
   <header>
-    <h1><img src="logo.png" alt="StudyBridge Logo" class="logo" />StudyBridgeConnect</h1>
+    <h1><img src="logo.png" alt="StudyBridge Logo" class="logo"> StudyBridgeConnect</h1>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#abroad">Study Abroad</a></li>
-        <li><a href="#notes">Solved Notes</a></li>
+        <li><a href="#notes">Notes</a></li>
         <li><a href="#sop">SOP & Resume</a></li>
-        <li><a href="#blog">Blog</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#faq">FAQs</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <!-- Dark‑mode toggle -->
-    <button id="themeToggle" title="Toggle dark mode">🌙</button>
   </header>
 
-  <!-- ╔════════ Home ═════════╗ -->
+  <div class="announcement">🎉 Admission Open for Fall 2025 – Apply Now!</div>
+
   <section id="home">
-    <h2>Welcome to StudyBridgeConnect</h2>
-    <p>
-      Your trusted consultancy for studying abroad. We also provide educational
-      resources and application support services.
-    </p>
-  </section>
-
-  <!-- ╔════════ Study Abroad ═════════╗ -->
-  <section id="abroad">
-    <h2>Study Abroad</h2>
-
-    <details>
-      <summary>United Kingdom (UK)</summary>
-      <a class="pdf-link" href="brochures/uk-brochure.pdf">Download UK Brochure (PDF)</a><br />
-      <a class="pdf-link" href="checklists/uk-university.pdf">University Checklist</a><br />
-      <a class="pdf-link" href="checklists/uk-visa.pdf">Visa Checklist</a>
-    </details>
-
-    <details>
-      <summary>United States of America (USA)</summary>
-      <a class="pdf-link" href="brochures/usa-brochure.pdf">Download USA Brochure (PDF)</a><br />
-      <a class="pdf-link" href="checklists/usa-university.pdf">University Checklist</a><br />
-      <a class="pdf-link" href="checklists/usa-visa.pdf">Visa Checklist</a>
-    </details>
-
-    <details>
-      <summary>Canada</summary>
-      <a class="pdf-link" href="brochures/canada-brochure.pdf">Download Canada Brochure (PDF)</a><br />
-      <a class="pdf-link" href="checklists/canada-university.pdf">University Checklist</a><br />
-      <a class="pdf-link" href="checklists/canada-visa.pdf">Visa Checklist</a>
-    </details>
-
-    <details>
-      <summary>Australia</summary>
-      <a class="pdf-link" href="brochures/australia-brochure.pdf">Download Australia Brochure (PDF)</a><br />
-      <a class="pdf-link" href="checklists/australia-university.pdf">University Checklist</a><br />
-      <a class="pdf-link" href="checklists/australia-visa.pdf">Visa Checklist</a>
-    </details>
-  </section>
-
-  <!-- ╔════════ Solved Notes ═════════╗ -->
-  <section id="notes">
-    <h2>Solved Notes (Grade 5 – 12)</h2>
-    <input
-      id="notesSearch"
-      type="text"
-      placeholder="Type 'Grade 10' or a keyword…"
-      aria-label="Search solved notes"
-    />
-    <ul id="notesList">
-      <li><a class="pdf-link" href="notes/grade5.pdf">Grade 5 Notes (PDF)</a></li>
-      <li><a class="pdf-link" href="notes/grade6.pdf">Grade 6 Notes (PDF)</a></li>
-      <li><a class="pdf-link" href="notes/grade7.pdf">Grade 7 Notes (PDF)</a></li>
-      <li><a class="pdf-link" href="notes/grade8.pdf">Grade 8 Notes (PDF)</a></li>
-      <li><a class="pdf-link" href="notes/grade9.pdf">Grade 9 Notes (PDF)</a></li>
-      <li><a class="pdf-link" href="notes/grade10.pdf">Grade 10 Notes (PDF)</a></li>
-      <li><a class="pdf-link" href="notes/grade11.pdf">Grade 11 Notes (PDF)</a></li>
-      <li><a class="pdf-link" href="notes/grade12.pdf">Grade 12 Notes (PDF)</a></li>
-    </ul>
-  </section>
-
-  <!-- ╔════════ SOP & Resume ═════════╗ -->
-  <section id="sop">
-    <h2>SOP & Resume Help</h2>
-    <p>
-      We provide comprehensive guidance in writing an impactful Statement of
-      Purpose and crafting a professional resume.
-    </p>
-    <ul>
-      <li><a class="pdf-link" href="templates/sop-template.pdf">SOP Sample Template (PDF)</a></li>
-      <li><a class="pdf-link" href="templates/resume-template.pdf">Resume Sample Template (PDF)</a></li>
-    </ul>
-  </section>
-
-  <!-- ╔════════ Blog ═════════╗ -->
-  <section id="blog">
-    <h2>Blog & Updates</h2>
-    <div id="blogPosts">
-      <article>
-        <h3>Welcome to our Blog!</h3>
-        <p>Stay tuned for study‑abroad tips, visa updates, and educational insights.</p>
-        <p><em>— Posted June 28, 2025</em></p>
-      </article>
+    <div class="card">
+      <h2>Welcome to StudyBridgeConnect</h2>
+      <p>Your one-stop destination for study abroad guidance, solved academic notes, SOP and resume support.</p>
     </div>
-    <p style="margin-top:1rem">
-      Add Markdown posts to the <code>blog/</code> folder on GitHub Pages;
-      Jekyll will publish them automatically.
-    </p>
   </section>
 
-  <!-- ╔════════ Contact ═════════╗ -->
+  <section id="abroad">
+    <h2>Countries & Cities We Cover</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="images/uk.jpg" alt="UK" class="flag-img">
+        <h3>United Kingdom</h3>
+        <p>London, Manchester, Birmingham, Leeds</p>
+      </div>
+      <div class="card">
+        <img src="images/usa.jpg" alt="USA" class="flag-img">
+        <h3>United States</h3>
+        <p>New York, Chicago, Los Angeles, Houston</p>
+      </div>
+      <div class="card">
+        <img src="images/canada.jpg" alt="Canada" class="flag-img">
+        <h3>Canada</h3>
+        <p>Toronto, Vancouver, Montreal, Calgary</p>
+      </div>
+      <div class="card">
+        <img src="images/uae.jpg" alt="UAE" class="flag-img">
+        <h3>United Arab Emirates</h3>
+        <p>Dubai, Abu Dhabi, Sharjah</p>
+      </div>
+      <div class="card">
+        <img src="images/australia.jpg" alt="Australia" class="flag-img">
+        <h3>Australia</h3>
+        <p>Sydney, Melbourne, Brisbane, Perth</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="notes">
+    <h2>Solved Notes (Grade 5–12)</h2>
+    <div class="grid">
+      <!-- Notes Links Here -->
+    </div>
+  </section>
+
+  <section id="sop">
+    <h2>SOP & Resume</h2>
+    <div class="card">
+      <p>Download our sample templates for SOP and Resume. We also offer personalized writing assistance.</p>
+    </div>
+  </section>
+
+  <section id="events">
+    <h2>Upcoming Events</h2>
+    <div class="card">
+      <p>🗓️ Online Counseling Webinar – July 15, 2025</p>
+      <p>📍 Education Expo Lahore – August 5, 2025</p>
+      <p>🧑‍🏫 Personal Statement Workshop – August 25, 2025</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="card">
+      <p><strong>Q:</strong> Do you charge for SOP writing?<br><strong>A:</strong> Basic templates are free. Custom writing is available at a small cost.</p>
+      <p><strong>Q:</strong> Are notes based on the Punjab board curriculum?<br><strong>A:</strong> Yes, they are tailored for Pakistani boards.</p>
+      <p><strong>Q:</strong> Can I request notes or services through WhatsApp?<br><strong>A:</strong> Absolutely! Use the green chat button at the bottom right.</p>
+    </div>
+  </section>
+
   <section id="contact">
-    <h2>Contact Us</h2>
-    <form id="contactForm">
-      <input type="text" name="from_name" placeholder="Your Name" required />
-      <input type="email" name="reply_to" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-    <p>Email: info@studybridgeconnect.com</p>
-    <p>WhatsApp: +92‑XXX‑XXXXXXX</p>
+    <h2>Contact Us</h2>
+    <div class="card">
+      <p>Email: info@studybridgeconnect.com</p>
+      <p>WhatsApp: +92-XXX-XXXXXXX</p>
+      <form>
+        <input type="text" placeholder="Your Name" required><br><br>
+        <input type="email" placeholder="Your Email" required><br><br>
+        <textarea placeholder="Your Message" rows="5" required></textarea><br><br>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   </section>
 
-  <!-- ╔════════ Footer ═════════╗ -->
-  <footer>
-    <img src="logo.png" alt="StudyBridge Logo" class="footer-logo" />
-    <p>&copy; 2025 StudyBridgeConnect. All rights reserved.</p>
+  <footer class="footer">
+    <img src="logo.png" alt="StudyBridge Logo">
+    <p>&copy; 2025 StudyBridgeConnect. All rights reserved.</p>
   </footer>
 
-  <!-- Floating WhatsApp button -->
-  <a
-    class="whatsapp-float"
-    href="https://wa.me/92XXXXXXXXXX"
-    target="_blank"
-    aria-label="Chat on WhatsApp"
-    >💬</a
-  >
-
-  <!-- Back‑to‑top button -->
-  <button id="backToTop" title="Back to top">↑</button>
-
-  <!-- PDF Viewer Modal -->
-  <div id="pdfModal" class="modal hidden" role="dialog" aria-modal="true">
-    <div class="modal-content">
-      <button id="closeModal" aria-label="Close PDF viewer">&times;</button>
-      <iframe id="pdfFrame" title="PDF viewer"></iframe>
-    </div>
-  </div>
-
-  <!-- ╔════════ JavaScript ═════════╗ -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      /* ---------- Notes search filter ---------- */
-      const notesSearch = document.getElementById("notesSearch");
-      const notesList = document.getElementById("notesList");
-      notesSearch.addEventListener("input", (e) => {
-        const term = e.target.value.toLowerCase();
-        [...notesList.querySelectorAll("li")].forEach((li) => {
-          li.style.display = li.textContent.toLowerCase().includes(term) ? "" : "none";
-        });
-      });
-
-      /* ---------- Back‑to‑top button ---------- */
-      const backBtn = document.getElementById("backToTop");
-      window.addEventListener("scroll", () =>
-        backBtn.classList.toggle("show", window.scrollY > 300)
-      );
-      backBtn.addEventListener("click", () =>
-        window.scrollTo({ top: 0, behavior: "smooth" })
-      );
-
-      /* ---------- Dark‑mode toggle ---------- */
-      const htmlTag = document.documentElement;
-      const themeBtn = document.getElementById("themeToggle");
-      const stored = localStorage.getItem("sbc_theme");
-      if (stored === "dark") {
-        htmlTag.classList.add("dark");
-        themeBtn.textContent = "☀️";
-      }
-      themeBtn.addEventListener("click", () => {
-        htmlTag.classList.toggle("dark");
-        const darkNow = htmlTag.classList.contains("dark");
-        themeBtn.textContent = darkNow ? "☀️" : "🌙";
-        localStorage.setItem("sbc_theme", darkNow ? "dark" : "light");
-      });
-
-      /* ---------- PDF modal viewer ---------- */
-      const modal = document.getElementById("pdfModal");
-      const frame = document.getElementById("pdfFrame");
-      const closeMd = document.getElementById("closeModal");
-      document.querySelectorAll("a.pdf-link").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          frame.src = link.getAttribute("href");
-          modal.classList.remove("hidden");
-        });
-      });
-      const hideModal = () => {
-        modal.classList.add("hidden");
-        frame.src = "";
-      };
-      closeMd.addEventListener("click", hideModal);
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) hideModal();
-      });
-
-      /* ---------- EmailJS contact form ---------- */
-      emailjs.init("YOUR_PUBLIC_KEY_HERE"); // ← replace with your EmailJS Public Key
-      const contactForm = document.getElementById("contactForm");
-      contactForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        emailjs
-          .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", contactForm)
-          .then(() => {
-            alert("Message sent! We'll respond soon.");
-            contactForm.reset();
-          })
-          .catch((err) => {
-            alert("Email failed, please try again later." + err);
-          });
-      });
-    });
-  </script>
+  <a href="https://wa.me/92XXXXXXXXXX" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
 </body>
 </html>
