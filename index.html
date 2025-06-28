@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudyBridgeConnect</title>
+
+  <!-- Core stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- EmailJS for contact form (replace keys with your own) -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <!-- Theme & component tweaks (override style.css) -->
+  <style>
+    :root {
+      --primary-color: #004e89;     /* deep navy‑blue from logo */
+      --secondary-color: #f5b400;   /* golden yellow from logo */
+      --accent-color: #0cafff;      /* lighter sky blue  */
+      --light-color: #f9f9f9;
+      --dark-color: #1b1b1b;
+      --card-radius: 10px;
+    }
+
+    /* Header */
+    header {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+    }
+    header img.logo {
+      height: 48px;
+      margin-right: 0.6rem;
+    }
+
+    /* Footer with centered logo */
+    footer {
+      background: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 1rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-logo {
+      height: 60px;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Back‑to‑top button */
+    #backToTop {
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      background: var(--secondary-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.55rem 0.8rem;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+    }
+    #backToTop.show {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ╔════════ Header ═════════╗ -->
+  <header>
+    <h1><img src="logo.png" alt="StudyBridge Logo" class="logo" />StudyBridgeConnect</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#abroad">Study Abroad</a></li>
+        <li><a href="#notes">Solved Notes</a></li>
+        <li><a href="#sop">SOP & Resume</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <!-- Dark‑mode toggle -->
+    <button id="themeToggle" title="Toggle dark mode">🌙</button>
+  </header>
+
+  <!-- ╔════════ Home ═════════╗ -->
+  <section id="home">
+    <h2>Welcome to StudyBridgeConnect</h2>
+    <p>
+      Your trusted consultancy for studying abroad. We also provide educational
+      resources and application support services.
+    </p>
+  </section>
+
+  <!-- ╔════════ Study Abroad ═════════╗ -->
+  <section id="abroad">
+    <h2>Study Abroad</h2>
+
+    <details>
+      <summary>United Kingdom (UK)</summary>
+      <a class="pdf-link" href="brochures/uk-brochure.pdf">Download UK Brochure (PDF)</a><br />
+      <a class="pdf-link" href="checklists/uk-university.pdf">University Checklist</a><br />
+      <a class="pdf-link" href="checklists/uk-visa.pdf">Visa Checklist</a>
+    </details>
+
+    <details>
+      <summary>United States of America (USA)</summary>
+      <a class="pdf-link" href="brochures/usa-brochure.pdf">Download USA Brochure (PDF)</a><br />
+      <a class="pdf-link" href="checklists/usa-university.pdf">University Checklist</a><br />
+      <a class="pdf-link" href="checklists/usa-visa.pdf">Visa Checklist</a>
+    </details>
+
+    <details>
+      <summary>Canada</summary>
+      <a class="pdf-link" href="brochures/canada-brochure.pdf">Download Canada Brochure (PDF)</a><br />
+      <a class="pdf-link" href="checklists/canada-university.pdf">University Checklist</a><br />
+      <a class="pdf-link" href="checklists/canada-visa.pdf">Visa Checklist</a>
+    </details>
+
+    <details>
+      <summary>Australia</summary>
+      <a class="pdf-link" href="brochures/australia-brochure.pdf">Download Australia Brochure (PDF)</a><br />
+      <a class="pdf-link" href="checklists/australia-university.pdf">University Checklist</a><br />
+      <a class="pdf-link" href="checklists/australia-visa.pdf">Visa Checklist</a>
+    </details>
+  </section>
+
+  <!-- ╔════════ Solved Notes ═════════╗ -->
+  <section id="notes">
+    <h2>Solved Notes (Grade 5 – 12)</h2>
+    <input
+      id="notesSearch"
+      type="text"
+      placeholder="Type 'Grade 10' or a keyword…"
+      aria-label="Search solved notes"
+    />
+    <ul id="notesList">
+      <li><a class="pdf-link" href="notes/grade5.pdf">Grade 5 Notes (PDF)</a></li>
+      <li><a class="pdf-link" href="notes/grade6.pdf">Grade 6 Notes (PDF)</a></li>
+      <li><a class="pdf-link" href="notes/grade7.pdf">Grade 7 Notes (PDF)</a></li>
+      <li><a class="pdf-link" href="notes/grade8.pdf">Grade 8 Notes (PDF)</a></li>
+      <li><a class="pdf-link" href="notes/grade9.pdf">Grade 9 Notes (PDF)</a></li>
+      <li><a class="pdf-link" href="notes/grade10.pdf">Grade 10 Notes (PDF)</a></li>
+      <li><a class="pdf-link" href="notes/grade11.pdf">Grade 11 Notes (PDF)</a></li>
+      <li><a class="pdf-link" href="notes/grade12.pdf">Grade 12 Notes (PDF)</a></li>
+    </ul>
+  </section>
+
+  <!-- ╔════════ SOP & Resume ═════════╗ -->
+  <section id="sop">
+    <h2>SOP & Resume Help</h2>
+    <p>
+      We provide comprehensive guidance in writing an impactful Statement of
+      Purpose and crafting a professional resume.
+    </p>
+    <ul>
+      <li><a class="pdf-link" href="templates/sop-template.pdf">SOP Sample Template (PDF)</a></li>
+      <li><a class="pdf-link" href="templates/resume-template.pdf">Resume Sample Template (PDF)</a></li>
+    </ul>
+  </section>
+
+  <!-- ╔════════ Blog ═════════╗ -->
+  <section id="blog">
+    <h2>Blog & Updates</h2>
+    <div id="blogPosts">
+      <article>
+        <h3>Welcome to our Blog!</h3>
+        <p>Stay tuned for study‑abroad tips, visa updates, and educational insights.</p>
+        <p><em>— Posted June 28, 2025</em></p>
+      </article>
+    </div>
+    <p style="margin-top:1rem">
+      Add Markdown posts to the <code>blog/</code> folder on GitHub Pages;
+      Jekyll will publish them automatically.
+    </p>
+  </section>
+
+  <!-- ╔════════ Contact ═════════╗ -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" name="from_name" placeholder="Your Name" required />
+      <input type="email" name="reply_to" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <p>Email: info@studybridgeconnect.com</p>
+    <p>WhatsApp: +92‑XXX‑XXXXXXX</p>
+  </section>
+
+  <!-- ╔════════ Footer ═════════╗ -->
+  <footer>
+    <img src="logo.png" alt="StudyBridge Logo" class="footer-logo" />
+    <p>&copy; 2025 StudyBridgeConnect. All rights reserved.</p>
+  </footer>
+
+  <!-- Floating WhatsApp button -->
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/92XXXXXXXXXX"
+    target="_blank"
+    aria-label="Chat on WhatsApp"
+    >💬</a
+  >
+
+  <!-- Back‑to‑top button -->
+  <button id="backToTop" title="Back to top">↑</button>
+
+  <!-- PDF Viewer Modal -->
+  <div id="pdfModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button id="closeModal" aria-label="Close PDF viewer">&times;</button>
+      <iframe id="pdfFrame" title="PDF viewer"></iframe>
+    </div>
+  </div>
+
+  <!-- ╔════════ JavaScript ═════════╗ -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      /* ---------- Notes search filter ---------- */
+      const notesSearch = document.getElementById("notesSearch");
+      const notesList = document.getElementById("notesList");
+      notesSearch.addEventListener("input", (e) => {
+        const term = e.target.value.toLowerCase();
+        [...notesList.querySelectorAll("li")].forEach((li) => {
+          li.style.display = li.textContent.toLowerCase().includes(term) ? "" : "none";
+        });
+      });
+
+      /* ---------- Back‑to‑top button ---------- */
+      const backBtn = document.getElementById("backToTop");
+      window.addEventListener("scroll", () =>
+        backBtn.classList.toggle("show", window.scrollY > 300)
+      );
+      backBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      );
+
+      /* ---------- Dark‑mode toggle ---------- */
+      const htmlTag = document.documentElement;
+      const themeBtn = document.getElementById("themeToggle");
+      const stored = localStorage.getItem("sbc_theme");
+      if (stored === "dark") {
+        htmlTag.classList.add("dark");
+        themeBtn.textContent = "☀️";
+      }
+      themeBtn.addEventListener("click", () => {
+        htmlTag.classList.toggle("dark");
+        const darkNow = htmlTag.classList.contains("dark");
+        themeBtn.textContent = darkNow ? "☀️" : "🌙";
+        localStorage.setItem("sbc_theme", darkNow ? "dark" : "light");
+      });
+
+      /* ---------- PDF modal viewer ---------- */
+      const modal = document.getElementById("pdfModal");
+      const frame = document.getElementById("pdfFrame");
+      const closeMd = document.getElementById("closeModal");
+      document.querySelectorAll("a.pdf-link").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          frame.src = link.getAttribute("href");
+          modal.classList.remove("hidden");
+        });
+      });
+      const hideModal = () => {
+        modal.classList.add("hidden");
+        frame.src = "";
+      };
+      closeMd.addEventListener("click", hideModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) hideModal();
+      });
+
+      /* ---------- EmailJS contact form ---------- */
+      emailjs.init("YOUR_PUBLIC_KEY_HERE"); // ← replace with your EmailJS Public Key
+      const contactForm = document.getElementById("contactForm");
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        emailjs
+          .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", contactForm)
+          .then(() => {
+            alert("Message sent! We'll respond soon.");
+            contactForm.reset();
+          })
+          .catch((err) => {
+            alert("Email failed, please try again later." + err);
+          });
+      });
+    });
+  </script>
+</body>
+</html>
